@@ -40,7 +40,7 @@
         <main>
 
             <!-- section enemy -->
-            <section class="container-fluid mt-5">
+            <section class="container-fluid mt-5" id="enemy">
                 <div class="row justify-content-center">
                     <div class="col-6 border border-white shadow-lg py-3 text-center">
 
@@ -60,7 +60,7 @@
             </section>
 
             <!-- section player -->
-            <section class="container-fluid mt-5">
+            <section class="container-fluid mt-5" id="player">
                 <div class="row justify-content-center">
                     <div class="col-6 border border-white shadow-lg py-3 text-center">
 
@@ -77,6 +77,39 @@
 
                     </div>
                 </div>
+            </section>
+
+            <!-- section controls -->
+            <section class="container-fluid mt-5 d-flex flex-column gap-4" id="controls">
+
+                <div class="row justify-content-center gap-4 gap-sm-0">
+
+                    <!-- button attack -->
+                    <div class="col-12 col-sm-6 col-md-3 text-center">
+                        <button type="button" class="w-100 btn btn-primary">Attacco</button>
+                    </div>
+
+                    <!-- button attack special -->
+                    <div class="col-12 col-sm-6 col-md-3 text-center">
+                        <button type="button" class="w-100 btn btn-primary">Attacco Speciale</button>
+                    </div>
+
+                </div>
+
+                <div class="row justify-content-center gap-4 gap-sm-0">
+
+                    <!-- button medikit -->
+                    <div class="col-12 col-sm-6 col-md-3 text-center">
+                        <button type="button" class="w-100 btn btn-danger">Medikit</button>
+                    </div>
+
+                    <!-- button game over -->
+                    <div class="col-12 col-sm-6 col-md-3 text-center">
+                        <button type="button" class="w-100 btn btn-danger">Mi Arrendo!</button>
+                    </div>
+
+                </div>
+
             </section>
 
         </main>
