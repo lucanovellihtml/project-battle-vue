@@ -1,6 +1,10 @@
 //import
 const { createApp, ref, computed, watch } = Vue;
 
+//function random
+const getRandomValue = (min, max) => {
+    return Math.floor(Math.random() * (max - min) + min);
+}
 
 //dichiarazione dell'applicazione
 const myApp = createApp({
@@ -8,9 +12,6 @@ const myApp = createApp({
 
         //variable round
         const round = ref(0);
-
-        //variable flag healt enemy
-        const flagClickBottonAttack = ref(false);
 
         //variable health enemy total
         const healthEnemyTotal = ref(100);
@@ -33,9 +34,10 @@ const myApp = createApp({
         //function attack
         const handleClickAttack = () => {
             console.log("Hai cliccato attack");
-            attackPlayer.value = Math.floor(Math.random() * 30) + 1;
+            attackPlayer.value = getRandomValue(1, 20);
+            healthEnemyTotal.value -= attackPlayer.value;
             console.log("Attacco player ->", attackPlayer.value);
-            flagClickBottonAttack.value = true;
+            round.value++;
         }
 
         //function super attack
@@ -84,7 +86,6 @@ const myApp = createApp({
             healthPlayerNow,
             healthPlayerTotal,
             healthEnemyTotal,
-            flagClickBottonAttack,
             playerBarStyle,
             enemyBarStyle,
             attackEnemyDisabled
