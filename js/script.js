@@ -72,6 +72,7 @@ const myApp = createApp({
             console.log("Hai cliccato game over");
             healthPlayerTotal.value = 0;
             healthPlayerNow.value = "width:" + healthPlayerTotal.value + "%";
+            messaggeWinner.value = "Gamer over";
         }
 
         //function attack enemy
