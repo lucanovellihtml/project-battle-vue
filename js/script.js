@@ -43,8 +43,10 @@ const myApp = createApp({
         //function super attack
         const handleClickSuperAttack = () => {
             console.log("Hai cliccato super attack");
-            attackPlayer.value = Math.floor(Math.random() * 50) + 1;
-            console.log("Attacco player ->", attackPlayer.value);
+            attackPlayer.value = getRandomValue(10, 40);
+            healthEnemyTotal.value -= attackPlayer.value;
+            console.log("Super attacco player ->", attackPlayer.value);
+            round.value++;
         }
 
         //function medikit
