@@ -10,6 +10,9 @@ const getRandomValue = (min, max) => {
 const myApp = createApp({
     setup() {
 
+        //variable message winner
+        const messaggeWinner = ref();
+
         //variable round
         const round = ref(0);
 
@@ -105,6 +108,30 @@ const myApp = createApp({
                 return false
         })
 
+        //watch to check if winner is enemy
+        watch(healthEnemyTotal, (healthEnemyTotal, prevHealthEnemyTotal) => {
+
+            if (healthEnemyTotal.value <= 0 && healthPlayerTotal.value <= 0) {
+                messaggeWinner.value = "Pareggio";
+            }
+            else if (healthPlayerTotal.value <= 0) {
+                messaggeWinner.value = "Game Over";
+            }
+
+        })
+
+        //watch to check if winner is player
+        watch(healthPlayerTotal, (healthPlayerTotal, prevHealthPlayerTotal) => {
+
+            if (healthPlayerTotal.value <= 0 && healthEnemyTotal.value <= 0) {
+                messaggeWinner.value = "Pareggio";
+            }
+            else if (healthEnemyTotal.value <= 0) {
+                messaggeWinner.value = "Hai vinto";
+            }
+
+        })
+
         return {
             round,
             handleClickAttack,
@@ -117,7 +144,8 @@ const myApp = createApp({
             healthEnemyTotal,
             playerBarStyle,
             enemyBarStyle,
-            attackEnemyDisabled
+            attackEnemyDisabled,
+            messaggeWinner
         }
 
     }
