@@ -31,34 +31,44 @@ const myApp = createApp({
         //variable attack player
         const attackPlayer = ref();
 
-        //function attack
+        //function attack player
         const handleClickAttack = () => {
             console.log("Hai cliccato attack");
             attackPlayer.value = getRandomValue(1, 20);
             healthEnemyTotal.value -= attackPlayer.value;
             console.log("Attacco player ->", attackPlayer.value);
+            actionAttackEnemy();
             round.value++;
         }
 
-        //function super attack
+        //function super attack player
         const handleClickSuperAttack = () => {
             console.log("Hai cliccato super attack");
             attackPlayer.value = getRandomValue(10, 40);
             healthEnemyTotal.value -= attackPlayer.value;
             console.log("Super attacco player ->", attackPlayer.value);
+            actionAttackEnemy();
             round.value++;
         }
 
-        //function medikit
+        //function medikit player
         const handleClickMedikit = () => {
             console.log("Hai cliccato medikit");
         }
 
-        //function gamer over
+        //function gamer over player
         const handleClickGameOver = () => {
             console.log("Hai cliccato game over");
             healthPlayerTotal.value = 0;
             healthPlayerNow.value = "width:" + healthPlayerTotal.value + "%";
+        }
+
+        //function attack enemy
+        const actionAttackEnemy = () => {
+            console.log("Il nemico ha attaccato");
+            attackEnemy.value = getRandomValue(1, 40);
+            healthPlayerTotal.value -= attackEnemy.value;
+            console.log("Attacco nemico ->", attackEnemy.value);
         }
 
         //computed to manipulate player bar
@@ -85,7 +95,7 @@ const myApp = createApp({
             handleClickSuperAttack,
             handleClickGameOver,
             handleClickMedikit,
-            healthPlayerNow,
+            actionAttackEnemy,
             healthPlayerTotal,
             healthEnemyTotal,
             playerBarStyle,
