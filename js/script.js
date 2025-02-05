@@ -54,6 +54,14 @@ const myApp = createApp({
         //function medikit player
         const handleClickMedikit = () => {
             console.log("Hai cliccato medikit");
+            if (healthPlayerTotal.value + medikit > 100)
+                healthPlayerTotal.value = 100;
+            else
+                healthPlayerTotal.value += medikit;
+
+            round.value++;
+            console.log("Vita medicata -> ", healthPlayerTotal.value);
+            actionAttackEnemy();
         }
 
         //function gamer over player
