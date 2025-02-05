@@ -97,6 +97,14 @@ const myApp = createApp({
                 return false
         })
 
+        //computed to disable or active button medikit
+        const actionMedikitDisabled = computed(() => {
+            if (round.value < 3 || healthPlayerTotal.value >= 50)
+                return true
+            else
+                return false
+        })
+
         return {
             round,
             handleClickAttack,
@@ -104,6 +112,7 @@ const myApp = createApp({
             handleClickGameOver,
             handleClickMedikit,
             actionAttackEnemy,
+            actionMedikitDisabled,
             healthPlayerTotal,
             healthEnemyTotal,
             playerBarStyle,
