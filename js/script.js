@@ -38,7 +38,12 @@ const myApp = createApp({
         const handleClickAttack = () => {
             console.log("Hai cliccato attack");
             attackPlayer.value = getRandomValue(1, 20);
-            healthEnemyTotal.value -= attackPlayer.value;
+
+            if (healthEnemyTotal.value - attackPlayer.value <= 0)
+                healthEnemyTotal.value = 0;
+            else
+                healthEnemyTotal.value -= attackPlayer.value;
+
             console.log("Attacco player ->", attackPlayer.value);
             actionAttackEnemy();
             round.value++;
@@ -48,7 +53,12 @@ const myApp = createApp({
         const handleClickSuperAttack = () => {
             console.log("Hai cliccato super attack");
             attackPlayer.value = getRandomValue(10, 40);
-            healthEnemyTotal.value -= attackPlayer.value;
+
+            if (healthEnemyTotal.value - attackPlayer.value <= 0)
+                healthEnemyTotal.value = 0;
+            else
+                healthEnemyTotal.value -= attackPlayer.value;
+
             console.log("Super attacco player ->", attackPlayer.value);
             actionAttackEnemy();
             round.value++;
@@ -79,7 +89,12 @@ const myApp = createApp({
         const actionAttackEnemy = () => {
             console.log("Il nemico ha attaccato");
             attackEnemy.value = getRandomValue(1, 40);
-            healthPlayerTotal.value -= attackEnemy.value;
+
+            if (healthPlayerTotal.value - attackEnemy.value <= 0)
+                healthPlayerTotal.value = 0;
+            else
+                healthPlayerTotal.value -= attackEnemy.value;
+
             console.log("Attacco nemico ->", attackEnemy.value);
         }
 
