@@ -90,7 +90,8 @@
 
                     <!-- button attack special -->
                     <div class="col-12 col-sm-6 col-md-3 text-center">
-                        <button @click="handleClickSuperAttack" type="button" class="w-100 btn btn-primary">Attacco
+                        <button @click="handleClickSuperAttack" type="button" class="w-100 btn btn-primary"
+                            :disabled="attackEnemyDisabled">Attacco
                             Speciale</button>
                     </div>
 
