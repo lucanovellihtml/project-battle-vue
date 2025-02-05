@@ -1,6 +1,7 @@
 //import
 const { createApp, ref, computed, watch } = Vue;
 
+
 //dichiarazione dell'applicazione
 const myApp = createApp({
     setup() {
@@ -66,6 +67,13 @@ const myApp = createApp({
             return { width: healthEnemyTotal.value + "%" }
         })
 
+        //computed to disable or active button super attack
+        const attackEnemyDisabled = computed(() => {
+            if (round.value < 3)
+                return true
+            else
+                return false
+        })
 
         return {
             round,
@@ -78,7 +86,8 @@ const myApp = createApp({
             healthEnemyTotal,
             flagClickBottonAttack,
             playerBarStyle,
-            enemyBarStyle
+            enemyBarStyle,
+            attackEnemyDisabled
         }
 
     }
