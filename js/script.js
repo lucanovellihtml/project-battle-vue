@@ -5,6 +5,9 @@ const { createApp, ref, computed, watch } = Vue;
 const myApp = createApp({
     setup() {
 
+        //variable round
+        const round = ref(0);
+
         //variable flag healt enemy
         const flagClickBottonAttack = ref(false);
 
@@ -53,15 +56,29 @@ const myApp = createApp({
             healthPlayerNow.value = "width:" + healthPlayerTotal.value + "%";
         }
 
+        //computed to manipulate player bar
+        const playerBarStyle = computed(() => {
+            return { width: healthPlayerTotal.value + "%" }
+        })
+
+        //computed to manipulate enemy bar
+        const enemyBarStyle = computed(() => {
+            return { width: healthEnemyTotal.value + "%" }
+        })
+
 
         return {
+            round,
             handleClickAttack,
             handleClickSuperAttack,
             handleClickGameOver,
             handleClickMedikit,
             healthPlayerNow,
+            healthPlayerTotal,
             healthEnemyTotal,
             flagClickBottonAttack,
+            playerBarStyle,
+            enemyBarStyle
         }
 
     }
