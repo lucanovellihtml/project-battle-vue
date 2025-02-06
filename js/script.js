@@ -10,6 +10,9 @@ const getRandomValue = (min, max) => {
 const myApp = createApp({
     setup() {
 
+        //array log
+        const logMessages = ref([]);
+
         //variable message winner
         const messaggeWinner = ref();
 
@@ -45,6 +48,8 @@ const myApp = createApp({
                 healthEnemyTotal.value -= attackPlayer.value;
 
             console.log("Attacco player ->", attackPlayer.value);
+            recordLog("player", "attack", attackPlayer.value);
+
             actionAttackEnemy();
             round.value++;
         }
@@ -59,7 +64,9 @@ const myApp = createApp({
             else
                 healthEnemyTotal.value -= attackPlayer.value;
 
-            console.log("Super attacco player ->", attackPlayer.value);
+            console.log("Super attacco player ->", attackPlayer);
+            recordLog("player", "super attack", attackPlayer.value);
+
             actionAttackEnemy();
             round.value++;
         }
@@ -74,6 +81,8 @@ const myApp = createApp({
 
             round.value++;
             console.log("Vita medicata -> ", healthPlayerTotal.value);
+            recordLog("player", "medikit", medikit);
+
             actionAttackEnemy();
         }
 
@@ -83,6 +92,8 @@ const myApp = createApp({
             healthPlayerTotal.value = 0;
             healthPlayerNow.value = "width:" + healthPlayerTotal.value + "%";
             messaggeWinner.value = "Gamer over";
+
+            recordLog("player", "gamer over", healthPlayerTotal.value);
         }
 
         //function attack enemy
@@ -96,6 +107,8 @@ const myApp = createApp({
                 healthPlayerTotal.value -= attackEnemy.value;
 
             console.log("Attacco nemico ->", attackEnemy.value);
+
+            recordLog("enemy", "attack", attackEnemy.value);
         }
 
         //computed to manipulate player bar
@@ -148,6 +161,16 @@ const myApp = createApp({
 
         })
 
+        //function log
+        const recordLog = (who, what, value) => {
+            logMessages.value.unshift({
+                actionBy: who,
+                actionType: what,
+                actionValue: value
+            })
+        }
+
+
         return {
             round,
             handleClickAttack,
@@ -161,7 +184,8 @@ const myApp = createApp({
             playerBarStyle,
             enemyBarStyle,
             attackEnemyDisabled,
-            messaggeWinner
+            messaggeWinner,
+            logMessages
         }
 
     }
