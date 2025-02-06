@@ -136,6 +136,58 @@
                         <!-- title -->
                         <h2 class="fs-5 fw-bold">Battaglia log</h2>
 
+                        <!-- list log -->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex gap-2 align-items-center" v-for="log in logMessages">
+
+                                <!-- player -->
+                                <span v-if="log.actionBy === 'player'"
+                                    class="bg-success fw-bold text-light p-2  rounded-pill">Tu
+                                </span>
+
+                                <!-- span enemy -->
+                                <span v-else class="fw-bold bg-warning p-2  rounded-pill">Enemy</span>
+
+                                <!-- span attack -->
+                                <span v-if="log.actionType === 'attack'" class="fw-bold">
+
+                                    attacca con
+
+                                    <span class="bg-danger-subtle fw-bold text-dark p-2  rounded-pill">{{
+                                        log.actionValue }}</span>
+
+                                </span>
+
+                                <!-- spansuper attack -->
+                                <span v-else-if="log.actionType === 'super attack'" class="fw-bold">
+                                    super attacca con
+
+                                    <span class="bg-danger-subtle fw-bold text-dark p-2  rounded-pill">{{
+                                        log.actionValue }}</span>
+
+                                </span>
+
+                                <!-- span medikit -->
+                                <span v-else-if="log.actionType === 'medikit'" class="fw-bold">
+                                    si medica con
+
+                                    <span class="bg-danger-subtle fw-bold text-dark p-2  rounded-pill">{{
+                                        log.actionValue }}</span>
+
+                                </span>
+
+                                <!-- span gamer over -->
+                                <span v-else="log.actionType === 'game over'" class="fw-bold">
+                                    game over
+
+                                    <span class="bg-danger-subtle fw-bold text-dark p-2  rounded-pill">{{
+                                        log.actionValue }}</span>
+
+                                </span>
+
+                            </li>
+                        </ul>
+
                     </div>
             </section>
 
