@@ -6,6 +6,11 @@ const getRandomValue = (min, max) => {
     return Math.floor(Math.random() * (max - min) + min);
 }
 
+//function refresh page
+function refreshPage() {
+    window.location.reload();
+}
+
 //dichiarazione dell'applicazione
 const myApp = createApp({
     setup() {
