@@ -70,7 +70,7 @@
             </section>
 
             <!-- section player -->
-            <section class=" container-fluid mt-5" id="player">
+            <section class="container-fluid mt-5" id="player">
                 <div class="row justify-content-center px-3 px-sm-0">
                     <div class="col-12 col-sm-6 border border-white shadow-lg py-3 text-center">
 
@@ -89,44 +89,68 @@
                 </div>
             </section>
 
-            <!-- section controls -->
-            <section class="container-fluid mt-5 d-flex flex-column gap-4" id="controls">
+            <!-- template controls -->
+            <template v-if="!messaggeWinner">
 
-                <!-- row buttons attack -->
-                <div class="row justify-content-center gap-4 gap-sm-0">
+                <!-- section controls -->
+                <section class="container-fluid mt-5 d-flex flex-column gap-4" id="controls">
 
-                    <!-- button attack -->
-                    <div class="col-12 col-sm-6 col-md-3 text-center">
-                        <button @click="handleClickAttack" type="button" class="w-100 btn btn-primary">Attacco</button>
+                    <!-- row buttons attack -->
+                    <div class="row justify-content-center gap-4 gap-sm-0">
+
+                        <!-- button attack -->
+                        <div class="col-12 col-sm-6 col-md-3 text-center">
+                            <button @click="handleClickAttack" type="button"
+                                class="w-100 btn btn-primary">Attacco</button>
+                        </div>
+
+                        <!-- button attack special -->
+                        <div class="col-12 col-sm-6 col-md-3 text-center">
+                            <button @click="handleClickSuperAttack" type="button" class="w-100 btn btn-primary"
+                                :disabled="attackEnemyDisabled">Attacco
+                                Speciale</button>
+                        </div>
+
                     </div>
 
-                    <!-- button attack special -->
-                    <div class="col-12 col-sm-6 col-md-3 text-center">
-                        <button @click="handleClickSuperAttack" type="button" class="w-100 btn btn-primary"
-                            :disabled="attackEnemyDisabled">Attacco
-                            Speciale</button>
+                    <!-- row buttons medikit/gamer over -->
+                    <div class="row justify-content-center gap-4 gap-sm-0">
+
+                        <!-- button medikit -->
+                        <div class="col-12 col-sm-6 col-md-3 text-center">
+                            <button @click="handleClickMedikit" type="button" class="w-100 btn btn-danger"
+                                :disabled="actionMedikitDisabled">Medikit</button>
+                        </div>
+
+                        <!-- button game over -->
+                        <div class="col-12 col-sm-6 col-md-3 text-center">
+                            <button @click="handleClickGameOver" type="button" class="w-100 btn btn-danger">Mi
+                                Arrendo!</button>
+                        </div>
+
                     </div>
 
-                </div>
+                </section>
 
-                <!-- row buttons medikit/gamer over -->
-                <div class="row justify-content-center gap-4 gap-sm-0">
+            </template>
 
-                    <!-- button medikit -->
-                    <div class="col-12 col-sm-6 col-md-3 text-center">
-                        <button @click="handleClickMedikit" type="button" class="w-100 btn btn-danger"
-                            :disabled="actionMedikitDisabled">Medikit</button>
+            <!-- template reset -->
+            <template v-if="healthPlayerTotal <= 0 || healthEnemyTotal.value <=0">
+
+                <!-- section reset -->
+                <section class="container-fluid mt-5">
+                    <div class="row justify-content-center">
+
+                        <!-- button reset -->
+                        <div class="col-12 col-sm-6 col-md-3 text-center">
+                            <button type="button" class="w-100 btn btn-primary" onclick="refreshPage()">Reset</button>
+                        </div>
+
                     </div>
 
-                    <!-- button game over -->
-                    <div class="col-12 col-sm-6 col-md-3 text-center">
-                        <button @click="handleClickGameOver" type="button" class="w-100 btn btn-danger">Mi
-                            Arrendo!</button>
-                    </div>
+                </section>
 
-                </div>
-
-            </section>
+            </template>
 
             <!-- section log -->
             <section class="container-fluid mt-5" id="log">
